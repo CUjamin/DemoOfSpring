@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>index_out</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>my thymeleaf index OUT by CUJ..........</h1>
+        <p th:text="'Index Out ！, name : ' + ${name} + '!'" >3333</p>
+        <!--<a th:href="@{'/v1/thymeleaf/info_more?para=' + ${para}}">更多详情</a>-->
+        <a th:href="@{'/v1/thymeleaf/info_more?para=' + ${para} +'&amp;&amp;name='+ ${name}}">更多详情</a>
+    </body>
+</html>

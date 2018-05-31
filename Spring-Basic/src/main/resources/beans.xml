@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>     
+<beans
+xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+<context:component-scan base-package="cuj/basic/demo"/>
+<!--
+
+	该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入    
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>  
+
+    <bean id="boss" class="TestDemo.Boss">     
+        <property name="car" ref="car"/>     
+        <property name="office" ref="office" />     
+    </bean> 
+-->    
+    
+    <bean id="office" class="cuj.basic.demo.Office">
+        <property name="officeNo" value="002"/>     
+    </bean>     
+    <bean id="car" class="cuj.basic.demo.Car" scope="singleton">
+        <property name="brand" value=" 红旗 CA72"/>     
+        <property name="price" value="2000"/>     
+    </bean>    
+   
+</beans>     

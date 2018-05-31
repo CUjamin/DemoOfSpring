@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>new_file</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<!--	<script type="application/javascript" src="js/new_file.js"></script>-->
+	<body>
+		<div class="img">
+			<img class="img-responsive" th:src="@{/img/20140602145959_cQkr5.jpeg}" style="width: 303px;height: 171px;"/>
+
+			<map name="hunter" id="hunter" >
+				<area shop="circle" coords="50,50,50" href="https://www.chiphell.com/portal.php" alt="CHH" /><br />
+				<area shop="circle" coords="200,50,50" href="http://mvnrepository.com/" alt="MAVEN" /><br />
+			</map>
+			<table id="target"
+				   ondblclick="this.contentEditable=true"
+				   style="width:420px" border="1">
+				<caption><b>caption</b></caption>
+				<thead>
+				<tr>
+					<th>列1</th>
+					<th>列2</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<td colspan="2" style="text-align: right">tfoot</td>
+				</tr>
+				</tfoot>
+				<tr>
+					<td rowspan="2">rowspan</td>
+					<td>AAAAAAAAAAAAAAAA</td>
+				</tr>
+				<tr>
+					<td>BBBBBBBBBBBBBBBBBBBB</td>
+				</tr>
+				<tr>
+					<td colspan="3">colspan</td>
+				</tr>
+				<tr>
+					<td>CCCCCCCCCCCC</td>
+					<td>cccccccccccc</td>
+				</tr>
+				<tr>
+					<td>DDDDDDDDDDDDDD</td>
+					<td>ddddddddddddddd</td>
+				</tr>
+				<tr>
+					<td>EEEEEEEEEEEEEEE</td>
+					<td>eeeeeeeeeeeeeee</td>
+				</tr>
+			</table>
+			<div class="img">
+				<div th:include="img :: html" width="300" height="150"></div>
+			</div>
+		</div>
+	</body>
+</html>
