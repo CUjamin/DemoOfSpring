@@ -1,1 +1,1 @@
-DemoOfThymeleafSpring
+DemoOfSpring
