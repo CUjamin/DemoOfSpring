@@ -11,4 +11,5 @@ public interface InfoService {
     User getUserByName(String Name);
     Apple getApple();
     Apple getAppleByName(String name);
+    int insertApple(Apple apple);
 }

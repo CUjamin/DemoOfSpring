@@ -1,12 +1,10 @@
 package cuj.controller;
 
+import cuj.domain.Apple;
 import cuj.service.InfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by cujamin on 2017/1/13.
@@ -18,16 +16,26 @@ public class DBControllerImpl implements DBController{
     @Autowired
     private InfoService infoService;
 
-    @RequestMapping(value = "/s/user" , method = RequestMethod.GET)
+    @RequestMapping(value = "/s/user/get" , method = RequestMethod.GET)
     public String getUserByName(@RequestParam("name")String name)
     {
         log.info("getUser is ok");
         return infoService.getUser().toString();
     }
-    @RequestMapping(value = "/s/apple" , method = RequestMethod.GET)
+    @RequestMapping(value = "/s/apple/get" , method = RequestMethod.GET)
     public String getAppleByName(@RequestParam("name")String name)
     {
         log.info("getApple is ok");
         return infoService.getApple().toString();
+    }
+    @GetMapping(value="/s/apple/add")
+    public String addApple()
+    {
+        Apple apple = new Apple();
+        apple.setId(100);
+        apple.setColor("GREEN");
+        apple.setName("hahaha");
+        int result = infoService.insertApple(apple);
+        return "成功："+result;
     }
 }
