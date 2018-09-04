@@ -1,12 +1,14 @@
 package cuj.service;
 
-import cuj.Application;
 import cuj.dao.AppleDao;
+import cuj.dao.user.UserDao;
 import cuj.domain.Apple;
-import cuj.domain.User;
+import cuj.domain.user.UserDo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by cujamin on 2018/8/29.
@@ -20,13 +22,16 @@ public class InfoServiceImpl implements InfoService {
     @Autowired
     private AppleDao appleDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
-    public User getUser() {
-        return null;
+    public List<UserDo> getUser() {
+        return userDao.getUser();
     }
 
     @Override
-    public User getUserByName(String Name) {
+    public UserDo getUserByName(String Name) {
         return null;
     }
 

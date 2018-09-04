@@ -4,22 +4,22 @@
 <mapper namespace="cuj.mappers.userMapper">
     <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
    使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
-   resultType="cuj.DemoOfMybatis.domain.User"就表示将查询结果封装成一个User类的对象返回
+   resultType="cuj.DemoOfMybatis.domain.UserDo"就表示将查询结果封装成一个User类的对象返回
    User类就是users表所对应的实体类-->
 
     <!--根据id查询得到一个user对象-->
     <select
             id="getUserById"
             parameterType="int"
-            resultType="cuj.domain.User">
+            resultType="cuj.domain.user.UserDo">
         <![CDATA[
 		select * from users where id=#{id}
 		]]>
     </select>
-    <!-- 创建用户（User） -->
+    <!-- 创建用户（UserDo） -->
     <select
             id="addUser"
-            parameterType = "cuj.domain.User">
+            parameterType = "cuj.domain.user.UserDo">
         <![CDATA[
 		insert into users (name ,age) values (#{name},#{age})
 		]]>

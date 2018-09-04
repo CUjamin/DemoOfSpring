@@ -16,6 +16,13 @@ public class DBControllerImpl implements DBController{
     @Autowired
     private InfoService infoService;
 
+    @RequestMapping(value = "/s/users/get" , method = RequestMethod.GET)
+    public String getUsers()
+    {
+        log.info("getUser is ok");
+        return infoService.getUser().toString();
+    }
+
     @RequestMapping(value = "/s/user/get" , method = RequestMethod.GET)
     public String getUserByName(@RequestParam("name")String name)
     {

@@ -1,9 +1,9 @@
-package cuj.domain;
+package cuj.domain.user;
 
 /**
  * Created by cujamin on 2017/1/13.
  */
-public class User {
+public class UserDo {
 
     private int id;
     private String name;
@@ -41,14 +41,14 @@ public class User {
     public void setFid(String fid) {
         this.fid = fid;
     }
+
     @Override
-    public String toString()
-    {
-        return "User~~ "+
-                " id: "+id+
-                ";name: "+name+
-                ";age: "+age+
-                ";fid: "+fid+
-                ";";
+    public String toString() {
+        return "UserDo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", fid='" + fid + '\'' +
+                '}';
     }
 }
