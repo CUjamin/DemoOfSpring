@@ -1,12 +1,13 @@
 
-mybatis:
-  url: jdbc:mysql://localhost:3306/mybatis
-  username: root
-  password: root
-  maxActive: 500
-  driver: com.mysql.jdbc.Driver
-#
-#mybatis.url6=jdbc:mysql://localhost:3306/mybatis2
-#mybatis.username6=root
-#mybatis.password6=root
-#mybatis.maxActive6=500
+spring:
+  datasource:
+    db1:
+      url: jdbc:mysql://X.X.X.X:port/titan?characterEncoding=UTF-8
+      username:
+      password:
+      driver-class-name: com.mysql.jdbc.Driver
+    db2:
+      url: jdbc:mysql://X.X.X.X:port/titan2?characterEncoding=UTF-8
+      username:
+      password:
+      driver-class-name: com.mysql.jdbc.Driver

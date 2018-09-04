@@ -3,6 +3,8 @@ package cuj.config.mybatis;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,67 +15,33 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
+import javax.sql.DataSource;
+
 /**
  * Created by cujamin on 2017/1/13.
  */
 @Configuration
-public class MyBatisConfig implements ApplicationContextAware {
+@MapperScan(basePackages = {"titan.mapper"}, sqlSessionFactoryRef = "sqlSessionFactory1")
+public class MyBatisConfig {
     //这个接口可以用于获取spring上下文中定义的所有bean
 
     @Autowired
-    private DBConfig dBConfig;
+    @Qualifier("ds1")
+    private DataSource ds1;
 
-    private ApplicationContext context;
-    /**
-     * mybatis:
-     url: jdbc:mysql://localhost:3306/mybatis
-     username: root
-     password: root
-     maxActive: 500
-     driver: com.mysql.jdbc.Driver
-     */
 
-    @Bean(name = "primaryDS") @Qualifier("primaryDS")
-    @Primary
-    public DruidDataSource primaryDS() {
-        final String url = dBConfig.getUrl();
-        final String username = dBConfig.getUsername();
-        final String password = dBConfig.getPassword();
-        final int maxActive = dBConfig.getMaxActive();
-        System.out.println("username: " + username + ", password: " + password);
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName(dBConfig.getDriver());
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        dataSource.setMaxActive(maxActive);
-        return dataSource;
-    }
-
-    @Bean(name = "primaryFactory")
-    @Qualifier("primaryFactory")
-    public SqlSessionFactory sqlSessionFactoryPrimary() throws Exception {
+    @Bean
+    public SqlSessionFactory sqlSessionFactory1() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-        factoryBean.setDataSource(primaryDS());//使用之前的datasource
+        factoryBean.setDataSource(ds1); // 使用titan数据源, 连接titan库
 
-        String resourcePath = "classpath*:mappers/**.xml";
-        if(!"".equals(dBConfig.getUsername())){
-            resourcePath = "classpath*:mappers/" +  "/**.xml";
-        }
-        System.out.println("resourcePath: " + resourcePath);
-        factoryBean.setMapperLocations(context.getResources(resourcePath));//配置了mapper的地址
-        return factoryBean.getObject();//一个sqlsessionfactory就可以操作mapper里面定义的操作了
+        return factoryBean.getObject();
+
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        context = applicationContext;
-    }
-
-    @Bean(name = "freelinkConfigTransactionManager")
-    public DataSourceTransactionManager transactionManagerFreelinkConfig() {
-        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
-        transactionManager.setDataSource(primaryDS());
-        return transactionManager;//配置事物管理器
+    @Bean
+    public SqlSessionTemplate sqlSessionTemplate1() throws Exception {
+        SqlSessionTemplate template = new SqlSessionTemplate(sqlSessionFactory1()); // 使用上面配置的Factory
+        return template;
     }
 }
