@@ -1,9 +1,9 @@
-package cuj.domain;
+package cuj.dao.apple;
 
 /**
- * Created by cujamin on 2017/1/13.
+ * Created by cujamin on 2018/10/13.
  */
-public class Apple {
+public class AppleDo {
     private int id;
     private String name;
     private String color;
@@ -31,13 +31,13 @@ public class Apple {
     public void setColor(String color) {
         this.color = color;
     }
+
     @Override
-    public String toString()
-    {
-        return "Apple~~"+
-                " id: "+id+
-                ";name: "+name+
-                ";color: "+color+
-                ";";
+    public String toString() {
+        return "AppleDo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

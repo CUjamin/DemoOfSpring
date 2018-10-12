@@ -1,9 +1,11 @@
 package cuj.service;
 
-import cuj.dao.AppleDao;
+import cuj.dao.apple.AppleDao;
+import cuj.dao.apple.AppleDo;
 import cuj.dao.user.UserDao;
-import cuj.domain.Apple;
-import cuj.domain.user.UserDo;
+import cuj.dao.user.UserDo;
+import cuj.util.AppleUtil;
+import cuj.util.UserUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,31 +28,34 @@ public class InfoServiceImpl implements InfoService {
     private UserDao userDao;
 
     @Override
-    public List<UserDo> getUser() {
-        return userDao.getUser();
+    public UserVo getUser(String name)throws Exception {
+        UserDo userDo = userDao.getUserDo(name);
+        return UserUtil.do2vo(userDo);
     }
 
     @Override
-    public UserDo getUserByName(String Name) {
+    public UserVo getUserByName(String Name) throws Exception{
         return null;
     }
 
     @Override
-    public Apple getApple() {
+    public AppleVo getApple() throws Exception{
         return null;
     }
 
     @Override
-    public Apple getAppleByName(String name) {
+    public AppleVo getAppleByName(String name) throws Exception{
         return null;
     }
 
     @Override
-    public int insertApple(Apple apple) {
-        int result = appleDao.insertApple(apple);
+    public int insertApple(AppleVo appleVo) throws Exception{
+
+        AppleDo appleDo= AppleUtil.vo2do(appleVo);
+        int result = appleDao.insertApple(appleDo);
         try
         {
-             result = appleDao.insertApple(apple);
+             result = appleDao.insertApple(appleDo);
         }catch (Exception e)
         {
             logger.info("ERROR:"+e.getMessage());
