@@ -1,4 +1,4 @@
-package cuj.dao.user;
+package cuj.mapper.user;
 
 import cuj.domain.user.UserDo;
 import org.apache.ibatis.annotations.Result;
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by cujamin on 2018/9/3.
  */
 
-public interface UserDao {
+public interface UserMapper {
     @SelectProvider(type=UserSqlProvider.class,method = "getUser")
     @Results({
             @Result(property = "name",column = "name"),

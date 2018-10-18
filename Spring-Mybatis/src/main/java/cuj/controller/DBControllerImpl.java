@@ -1,6 +1,8 @@
 package cuj.controller;
 
 import cuj.domain.Apple;
+import cuj.domain.NlpResponse;
+import cuj.domain.NlpResult;
 import cuj.service.InfoService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +46,17 @@ public class DBControllerImpl implements DBController{
         apple.setName("hahaha");
         int result = infoService.insertApple(apple);
         return "成功："+result;
+    }
+
+
+    @RequestMapping(value = "/s/isover" , method = RequestMethod.GET)
+    public NlpResponse getIsOver()
+    {
+        NlpResponse nlpResponse = new NlpResponse();
+        NlpResult nlpResult = new NlpResult();
+        nlpResult.setIsOver(true);
+        nlpResult.setAudio("1234567.wav");
+        nlpResponse.setResult(nlpResult);
+        return nlpResponse;
     }
 }

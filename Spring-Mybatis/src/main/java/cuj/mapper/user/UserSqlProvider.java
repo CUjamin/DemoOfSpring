@@ -1,4 +1,4 @@
-package cuj.dao.user;
+package cuj.mapper.user;
 
 import org.apache.ibatis.jdbc.SQL;
 
