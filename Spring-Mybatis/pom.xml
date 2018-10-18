@@ -12,12 +12,7 @@
     <artifactId>Spring-Mybatis</artifactId>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>4.3.3.RELEASE</version>
-        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -48,6 +43,13 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot.version}</version>
         </dependency>
+
+        <!-- jdbcTemplate -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>

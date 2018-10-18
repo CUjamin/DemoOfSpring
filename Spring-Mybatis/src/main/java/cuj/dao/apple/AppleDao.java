@@ -1,6 +1,6 @@
-package cuj.dao;
+package cuj.dao.apple;
 
-import cuj.domain.Apple;
+import cuj.dao.MyBatisDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,11 +17,11 @@ public class AppleDao {
     @Autowired
     private MyBatisDao myBatisDao;
 
-    public int insertApple(Apple apple)
+    public int insertApple(AppleDo appleDo)
     {
         HashMap<String, Object> params = new HashMap<>(3);
-        params.put("name", apple.getName());
-        params.put("color", apple.getColor());
+        params.put("name", appleDo.getName());
+        params.put("color", appleDo.getColor());
         return myBatisDao.insert(namespace, ".insertApple", params);
     }
 }

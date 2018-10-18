@@ -1,10 +1,9 @@
-package cuj.domain.user;
+package cuj.dao.user;
 
 /**
- * Created by cujamin on 2017/1/13.
+ * Created by cujamin on 2018/10/13.
  */
 public class UserDo {
-
     private int id;
     private String name;
     private int age;
