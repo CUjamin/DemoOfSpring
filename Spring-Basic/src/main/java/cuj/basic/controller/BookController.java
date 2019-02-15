@@ -5,8 +5,7 @@ import cuj.basic.domain.book.Book;
 import cuj.basic.service.book.BooksManagerService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +19,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/book")
+@Log4j
 public class BookController {
-    private static final Log log = LogFactory.getLog(BookController.class.getName());
 
     @Autowired
     BooksManagerService booksManagerService;
@@ -31,20 +30,22 @@ public class BookController {
     @ApiOperation(value="获取图书", notes="根据书名获取图书")
     @RequestMapping(value = "/getbook",method = RequestMethod.GET)
     @HystrixCommand
-    public String getBook(
-            @RequestParam(value = "bookname",defaultValue = "bookname")String bookname,
-            @RequestParam(value = "count",defaultValue = "count")String count)
-    {
-        List<Book> bookList = booksManagerService.getBook(bookname,1);
-        if(null!=bookList)
-        {
-            log.info("get book: "+bookname+" ; info : "+bookList.toString());
-            return "get book.!!!!..: "+bookname+" ; info : "+bookList.toString();
-        }
-        else {
-            log.info("do not contain the book "+bookname);
-            return "do not contain the book "+bookname;
-        }
+    public String getBook(@RequestHeader("Accept-Encoding") String encoding,
+                          @RequestHeader("Keep-Alive") long keepAlive) {
+
+
+        log.info("encoding:"+encoding+";keepAlive:"+keepAlive);
+        return "OK";
+//        List<Book> bookList = booksManagerService.getBook(bookVo.getBookname(),1);
+//        if(null!=bookList)
+//        {
+//            log.info("get book: "+bookVo.getBookname()+" ; info : "+bookList.toString());
+//            return "get book.!!!!..: "+bookVo.getBookname()+" ; info : "+bookList.toString();
+//        }
+//        else {
+//            log.info("do not contain the book "+bookVo.getBookname());
+//            return "do not contain the book "+bookVo.getBookname();
+//        }
     }
 
     @ApiOperation(value="添加新书", notes="根据书名对象创建图书")

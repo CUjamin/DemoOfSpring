@@ -8,9 +8,9 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-    <bean id="helloWorldImpl1" class="cuj.spring.aop.HelloWorldImpl1" />
-    <bean id="helloWorldImpl2" class="cuj.spring.aop.HelloWorldImpl2" />
-    <bean id="timeHandler" class="cuj.spring.aop.TimeHandler" />
+    <bean id="helloWorldImpl1" class="cuj.spring.aop.demo.HelloWorldImpl1" />
+    <bean id="helloWorldImpl2" class="cuj.spring.aop.demo.HelloWorldImpl2" />
+    <bean id="timeHandler" class="cuj.spring.aop.demo.TimeHandler" />
 
     <aop:config>
         <aop:aspect id="time" ref="timeHandler">

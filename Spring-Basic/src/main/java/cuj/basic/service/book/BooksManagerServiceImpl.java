@@ -2,7 +2,7 @@ package cuj.basic.service.book;
 
 import cuj.basic.common.book.AddBookResult;
 import cuj.basic.domain.book.Book;
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -15,8 +15,8 @@ import java.util.Map;
  */
 
 @Service
+@Log4j
 public class BooksManagerServiceImpl implements BooksManagerService {
-    private static Logger log = Logger.getLogger(BooksManagerServiceImpl.class);
 
     private Map<String,List<Book>> bookMap = new HashMap<String, List<Book>>();
 

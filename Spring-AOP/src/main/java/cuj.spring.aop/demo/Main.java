@@ -1,4 +1,4 @@
-package cuj.spring.aop;
+package cuj.spring.aop.demo;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

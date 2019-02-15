@@ -1,7 +1,5 @@
 package cuj.dao;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -13,6 +11,8 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -192,7 +192,7 @@ public class MyBatisDao extends SqlSessionDaoSupport {
      * @return List<Map>
      */
     public List<Map> querySql(String sql) {
-        List<Map> list = Lists.newArrayList();
+        List<Map> list = new LinkedList<>();
         try {
             ResultSet rs = getSqlSession().getConnection().prepareStatement(sql,
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -207,7 +207,7 @@ public class MyBatisDao extends SqlSessionDaoSupport {
                 }
                 rs.beforeFirst();
                 while (rs.next()) {
-                    Map<String, String> map = Maps.newHashMap();
+                    Map<String, String> map = new HashMap<>();
                     for (String aColName : colName) {
                         map.put(aColName, rs.getString(aColName));
                     }

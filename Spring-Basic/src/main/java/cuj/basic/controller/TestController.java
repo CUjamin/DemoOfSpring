@@ -2,7 +2,7 @@ package cuj.basic.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiOperation;
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/test")
+@Log4j
 public class TestController {
-
-    private static final Logger log = Logger.getLogger(TestController.class);
 
     @Autowired
     private Environment env;
@@ -36,7 +35,7 @@ public class TestController {
             @RequestParam(value = "para",defaultValue = "para")String para)
     {
         String para2 = env.getProperty("para2");
-        log.info(para2);
+
         String result = env.getProperty(para);
         if(null==result)result = para+":null";
         else result = para+":"+result;

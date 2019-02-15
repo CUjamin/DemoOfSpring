@@ -1,6 +1,8 @@
 //package cuj.service;
 //
 //import cuj.dao.AppleDao;
+//import cuj.dao.apple.AppleDao;
+//import cuj.dao.user.UserDo;
 //import cuj.mapper.user.UserMapper;
 //import cuj.domain.Apple;
 //import cuj.domain.user.UserDo;

@@ -1,4 +1,4 @@
-package cuj.spring.aop;
+package cuj.spring.aop.demo;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
  */
 @Aspect
 public class TimeHandler {
-    @Pointcut("execution(* cuj.spring.aop.HelloWorld.doPrint(..))")
+    @Pointcut("execution(* cuj.spring.aop.demo.HelloWorld.doPrint(..))")
     public void printTime()
     {
         System.out.println(" 切点 CurrentTime = " + System.currentTimeMillis());

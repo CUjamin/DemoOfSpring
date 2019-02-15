@@ -1,4 +1,4 @@
-package cuj.spring.aop;
+package cuj.spring.aop.demo;
 
 /**
  * @Auther: cujamin
