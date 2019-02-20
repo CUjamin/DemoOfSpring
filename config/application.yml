@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+logging:
+  config: file:config/logback.xml
+#SSL
+#  ssl:
+#    key-store: classpath:ssl/keystore.p12
+#    key-store-password: egoo3466
+#    key-store-type: PKCS12
+#    key-alias: tomcat
+
+
+
+#热部署
+#spring:
+#  devtools:
+#    restart:
+#      additional-paths=src/main/java,src/main/resources
+
+swagger:
+  method:
+    submit: true
+
+swagger-url: http://127.0.0.1:8082
+
+para: aaaaaaaaaaaaaaaaaa
+para2: aaaaaaazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+
+
